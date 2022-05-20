@@ -16,13 +16,14 @@ var formCoverInput = document.querySelector(".user-cover");
 var formTitleInput = document.querySelector(".user-title");
 var formDescriptor1 = document.querySelector(".user-desc1");
 var formDescriptor2 = document.querySelector(".user-desc2");
+var savedCoverSection = document.querySelector(".saved-covers-section");
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
-
+var coversInSaved = []
 // Add your event listeners here 👇
 window.onload = makeRandomCover();
 randomCoverBtn.addEventListener("click", makeRandomCover);
@@ -30,6 +31,7 @@ makeYourOwnBtn.addEventListener("click", showMakeYourOwn);
 viewSavedCoverBtn.addEventListener("click", showSavedBooks);
 homeBtn.addEventListener("click", showMainPage);
 createNewBookBtn.addEventListener("click", createBook);
+saveCoverBtn.addEventListener("click", saveCover);
 
 // Create your event handlers and other functions here 👇
 function createBook() {
@@ -107,4 +109,15 @@ function showMyBook() {
   coverTitle.innerText = formTitleInput.value;
   tagline1.innerText = formDescriptor1.value;
   tagline2.innerText = formDescriptor2.value;
+}
+
+function saveCover() {
+  var newSavedCover = homeView.childNodes[1].cloneNode('deep');
+  if(coversInSaved.includes(currentCover)) {
+    window.alert("This cover already exists!");
+  } else {
+    newSavedCover.setAttribute('id', currentCover.id);
+    savedCoverSection.append(newSavedCover);
+    coversInSaved.push(currentCover)
+  }
 }
