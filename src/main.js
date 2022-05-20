@@ -23,7 +23,7 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
-
+var coversInSaved = []
 // Add your event listeners here 👇
 window.onload = makeRandomCover();
 randomCoverBtn.addEventListener("click", makeRandomCover);
@@ -113,10 +113,11 @@ function showMyBook() {
 
 function saveCover() {
   var newSavedCover = homeView.childNodes[1].cloneNode('deep');
-  if (!savedCoverSection.contains(newSavedCover)) {
-    newSavedCover.childNodes[1].setAttribute('id', currentCover.id);
-    savedCoverSection.append(newSavedCover);
-  } else {
+  if(coversInSaved.includes(currentCover)) {
     window.alert("This cover already exists!");
+  } else {
+    newSavedCover.setAttribute('id', currentCover.id);
+    savedCoverSection.append(newSavedCover);
+    coversInSaved.push(currentCover)
   }
 }
