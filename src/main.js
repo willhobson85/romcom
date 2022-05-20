@@ -8,9 +8,14 @@ var randomCoverBtn = document.querySelector(".random-cover-button");
 var saveCoverBtn = document.querySelector(".save-cover-button");
 var viewSavedCoverBtn = document.querySelector(".view-saved-button");
 var makeYourOwnBtn = document.querySelector(".make-new-button");
+var createNewBookBtn = document.querySelector(".create-new-book-button");
 var homeView = document.querySelector(".home-view");
 var saveView = document.querySelector(".saved-view");
 var formView = document.querySelector(".form-view");
+var formCoverInput = document.querySelector(".user-cover");
+var formTitleInput = document.querySelector(".user-title");
+var formDescriptor1 = document.querySelector(".user-desc1");
+var formDescriptor2 = document.querySelector(".user-desc2");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -24,9 +29,15 @@ randomCoverBtn.addEventListener("click", makeRandomCover);
 makeYourOwnBtn.addEventListener("click", showMakeYourOwn);
 viewSavedCoverBtn.addEventListener("click", showSavedBooks);
 homeBtn.addEventListener("click", showMainPage);
+createNewBookBtn.addEventListener("click", createBook);
 
 // Create your event handlers and other functions here 👇
-
+function createBook() {
+  event.preventDefault();
+  getBookData();
+  addBookItemsToArrays();
+  showMyBook();
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -74,4 +85,26 @@ function showMainPage() {
   } else if(!formView.classList.contains("hidden")) {
     formView.classList.add("hidden");
   }
+}
+
+function getBookData() {
+  var newBookCover = formCoverInput.value;
+  var newBookTitle = formTitleInput.value;
+  var newBookDescriptor1 = formDescriptor1.value;
+  var newBookDescriptor2 = formDescriptor2.value;
+  currentBook = new Cover(newBookCover, newBookTitle, newBookDescriptor1, newBookDescriptor2);
+}
+
+function addBookItemsToArrays() {
+  covers.push(formCoverInput.value);
+  titles.push(formTitleInput.value);
+  descriptors.push(formDescriptor1.value, formDescriptor2.value);
+}
+
+function showMyBook() {
+  showMainPage();
+  coverImage.src = formCoverInput.value;
+  coverTitle.innerText = formTitleInput.value;
+  tagline1.innerText = formDescriptor1.value;
+  tagline2.innerText = formDescriptor2.value;
 }
