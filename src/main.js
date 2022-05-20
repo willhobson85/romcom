@@ -16,7 +16,7 @@ var formCoverInput = document.querySelector(".user-cover");
 var formTitleInput = document.querySelector(".user-title");
 var formDescriptor1 = document.querySelector(".user-desc1");
 var formDescriptor2 = document.querySelector(".user-desc2");
-var savedCovers = document.querySelector(".saved-covers-section");
+var savedCoverSection = document.querySelector(".saved-covers-section");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -113,6 +113,10 @@ function showMyBook() {
 
 function saveCover() {
   var newSavedCover = homeView.childNodes[1].cloneNode('deep');
-  newSavedCover.childNodes[1].setAttribute('id', currentCover.id);
-  savedCovers.append(newSavedCover);
+  if (!savedCoverSection.contains(newSavedCover)) {
+    newSavedCover.childNodes[1].setAttribute('id', currentCover.id);
+    savedCoverSection.append(newSavedCover);
+  } else {
+    window.alert("This cover already exists!");
+  }
 }
