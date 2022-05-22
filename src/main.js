@@ -39,7 +39,6 @@ function createBook() {
   getBookData();
   addBookItemsToArrays();
   showMyBook();
-  console.log(currentCover, 'crateBook');
 }
 
 // We've provided one function to get you started
@@ -57,7 +56,6 @@ function makeRandomCover() {
   coverTitle.innerText = currentCover.title;
   tagline1.innerText = currentCover.tagline1;
   tagline2.innerText = currentCover.tagline2;
-  console.log(currentCover, 'makeRandomCover');
 }
 
 function showMakeYourOwn() {
@@ -114,7 +112,6 @@ function showMyBook() {
 }
 
 function saveCover() {
-  console.log(currentCover,'currentCover');
   if (savedCovers.includes(currentCover)) {
     window.alert("This cover already exists.");
   } else {
