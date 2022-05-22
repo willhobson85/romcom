@@ -23,7 +23,7 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
-var coversInSaved = []
+
 // Add your event listeners here 👇
 window.onload = makeRandomCover();
 randomCoverBtn.addEventListener("click", makeRandomCover);
@@ -112,12 +112,13 @@ function showMyBook() {
 }
 
 function saveCover() {
-  var newSavedCover = homeView.childNodes[1].cloneNode('deep');
-  if(coversInSaved.includes(currentCover)) {
-    window.alert("This cover already exists!");
+  if (savedCovers.includes(currentCover)) {
+    window.alert("This cover already exists.");
   } else {
-    newSavedCover.setAttribute('id', currentCover.id);
-    savedCoverSection.append(newSavedCover);
-    coversInSaved.push(currentCover)
+    savedCoverSection.innerHTML = "";
+    savedCovers.push(currentCover);
+    for (var i = 0; i < savedCovers.length; i++) {
+      savedCoverSection.innerHTML += "<section class='mini-cover'><img id="+savedCovers[i].id+" class='cover-image' src="+savedCovers[i].cover+"><h2 class='cover-title'>"+savedCovers[i].title+"</h2><h3 class='tagline'>A tale of <span class='tagline-1'>"+savedCovers[i].tagline1+"</span> and <span class='tagline-2'>"+savedCovers[i].tagline2+"</span></h3><img class='price-tag' src='./assets/price.png'><img class='overlay' src='./assets/overlay.png>"
+    }
   }
 }
