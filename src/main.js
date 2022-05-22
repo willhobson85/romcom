@@ -32,6 +32,7 @@ viewSavedCoverBtn.addEventListener("click", showSavedBooks);
 homeBtn.addEventListener("click", showMainPage);
 createNewBookBtn.addEventListener("click", createBook);
 saveCoverBtn.addEventListener("click", saveCover);
+saveView.addEventListener("dblclick", deleteCover);
 
 // Create your event handlers and other functions here 👇
 function createBook() {
@@ -117,8 +118,18 @@ function saveCover() {
   } else {
     savedCoverSection.innerHTML = "";
     savedCovers.push(currentCover);
-    for (var i = 0; i < savedCovers.length; i++) {
-      savedCoverSection.innerHTML += "<section class='mini-cover'><img id="+savedCovers[i].id+" class='cover-image' src="+savedCovers[i].cover+"><h2 class='cover-title'>"+savedCovers[i].title+"</h2><h3 class='tagline'>A tale of <span class='tagline-1'>"+savedCovers[i].tagline1+"</span> and <span class='tagline-2'>"+savedCovers[i].tagline2+"</span></h3><img class='price-tag' src='./assets/price.png'><img class='overlay' src='./assets/overlay.png>"
+    for(var i = 0; i < savedCovers.length; i++) {
+      savedCoverSection.innerHTML += "<section class='mini-cover'><img id="+savedCovers[i].id+" class='cover-image' src="+savedCovers[i].cover+"><h2 class='cover-title'>"+savedCovers[i].title+"</h2><h3 class='tagline'>A tale of <span class='tagline-1'>"+savedCovers[i].tagline1+"</span> and <span class='tagline-2'>"+savedCovers[i].tagline2+"</span></h3><img class='price-tag' src='./assets/price.png'><img class='overlay' src='./assets/overlay.png></section>"
     }
   }
+}
+
+function deleteCover(e) {
+  var coverId = document.getElementById(e.target.id);
+  for(var i = 0; i < savedCovers.length; i++) {
+    if(savedCovers[i].id == coverId.id) {
+      savedCovers.splice(i, 1)
+    }
+  }
+  coverId.parentElement.remove();
 }
