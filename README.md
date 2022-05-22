@@ -25,7 +25,7 @@
   - You are able to randomly generate a cover with the included selection of quotes, titles, and images.
   - You can input your own quotes, titles, and images.
   - You can save your randomly generated or custom covers.
-  - You can double click the image of a saved poster to delete it.
+  - You can double click the image of a saved cover to delete it.
 
 ## Set Up
 
