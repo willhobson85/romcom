@@ -44,4 +44,4 @@
   - The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
 
 ## Published link
-  - You can view the website [here](https://github.com/willhobson85/romcom)
+  - You can view the website [here](https://willhobson85.github.io/romcom/)
